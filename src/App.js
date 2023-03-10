@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./Components/Navbar";
+// eslint-disable-next-line
+import PhotoGrid from "./Components/PhotoGrid";
+import Card from "./Components/Card";
+import cards from "./data";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <PhotoGrid />
+      <div className="cards-list">
+        {cards.map((card) => {
+          return (
+            <Card
+              key={card.id}
+              coverImg={card.coverImg}
+              stats={card.stats}
+              price={card.price}
+              title={card.title}
+              location={card.location}
+              openSpots={card.openSpots}
+            />
+          );
+        })}
+      </div>
+    </>
   );
 }
 
